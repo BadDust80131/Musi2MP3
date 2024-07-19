@@ -2,7 +2,10 @@ import requests
 import json
 from pytube import YouTube
 import threading
+import os, sys
 
+# Set current directory to working directory
+os.chdir(sys.path[0])
 
 # Input Musi Playlist Code
 code = input("Input Musi Playlist Code: ")
@@ -19,7 +22,7 @@ def download(vid):
     link = YouTube("https://www.youtube.com/watch?v=" + vid["video_id"])
     # Only downloads audio rather than the full video
     video = link.streams.filter(only_audio=True).first()
-    video.download(filename=f"{link.title}.mp3",output_path="C:/Users/PC/Downloads/Music/Music")
+    video.download(filename=f"{link.title}.mp3")
 
 # Creates a thread for each mp3 in list then downloads them all asynchronously
 # Variable needed to keep track of all threads
