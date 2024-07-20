@@ -21,8 +21,10 @@ parsed = json.loads(data['success']['data'])
 def download(vid):
     link = YouTube("https://www.youtube.com/watch?v=" + vid["video_id"])
     # Only downloads audio rather than the full video
-    video = link.streams.filter(only_audio=True).first()
+    video = link.streams.get_audio_only("")
     video.download(filename=f"{link.title}.mp3")
+    #video = link.streams.filter(only_audio=True).first()
+    #video.download(filename=f"{link.title}.mp3")
 
 # Creates a thread for each mp3 in list then downloads them all asynchronously
 # Variable needed to keep track of all threads
