@@ -1,6 +1,6 @@
 import requests
 import json
-from pytube import YouTube
+from pytubefix import YouTube
 import threading
 import os, sys
 
